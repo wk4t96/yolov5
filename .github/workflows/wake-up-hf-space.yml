@@ -1,1 +1,17 @@
+name: Wake Up Hugging Face Space
 
+on:
+  schedule:
+    # 每天 00:00 UTC 運行一次
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允許手動觸發
+
+jobs:
+  wake-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send GET request to Hugging Face Space
+        run: |
+          curl -X GET "https://huggingface.co/spaces/wk4t96/PCB-defect-prediction"
+        env:
+          HF_SPACE_URL: "https://huggingface.co/spaces/wk4t96/PCB-defect-prediction"
